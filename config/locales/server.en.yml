@@ -1,11 +1,12 @@
 en:
   site_settings:
-    oauth2_enabled: "MusicBrainz OAuth2 is enabled"
-    oauth2_client_id: 'Client ID'
-    oauth2_client_secret: 'Client Secret'
-    oauth2_authorize_url: 'Authorization URL for MusicBrainz'
-    oauth2_token_url: 'Token URL for MusicBrainz'
-    oauth2_user_json_url: 'URL to fetch user JSON for MusicBrainz'
-    oauth2_email_verified: 'Check this if MusicBrainz has verified the email address'
-    oauth2_send_auth_header: 'Send the token as an HTTP Authorization header'
-    oauth2_button_title: 'Label for the login button'
+    musicbrainz_enabled: "MusicBrainz OAuth2 is enabled"
+    musicbrainz_client_id: 'Client ID'
+    musicbrainz_client_secret: 'Client Secret'
+    musicbrainz_site_url: 'Base URL of the MusicBrainz website'
+    musicbrainz_authorize_url: 'Authorization URL for MusicBrainz'
+    musicbrainz_token_url: 'Token URL for MusicBrainz'
+    musicbrainz_user_info_url: 'URL to fetch user JSON for MusicBrainz'
+    musicbrainz_email_verified: 'Check this if e-mails verified by MusicBrainz should be set to verified in Discourse'
+    musicbrainz_send_auth_header: 'Send the token as an HTTP Authorization header'
+    musicbrainz_button_title: 'Label for the login button'

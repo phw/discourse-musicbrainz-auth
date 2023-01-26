@@ -1,14 +1,15 @@
 login:
-  oauth2_enabled:
+  musicbrainz_enabled:
     default: false
     client: true
-  oauth2_client_id: ''
-  oauth2_client_secret: ''
-  oauth2_authorize_url: 'https://musicbrainz.org/oauth2/authorize'
-  oauth2_token_url: 'https://musicbrainz.org/oauth2/token'
-  oauth2_user_json_url: 'https://musicbrainz.org/oauth2/userinfo'
-  oauth2_email_verified: true
-  oauth2_send_auth_header: true
-  oauth2_button_title:
+  musicbrainz_client_id: ''
+  musicbrainz_client_secret: ''
+  musicbrainz_site_url: 'https://musicbrainz.org'
+  musicbrainz_authorize_url: '/oauth2/authorize'
+  musicbrainz_token_url: '/oauth2/token'
+  musicbrainz_user_info_url: '/oauth2/userinfo'
+  musicbrainz_email_verified: true
+  musicbrainz_send_auth_header: true
+  musicbrainz_button_title:
     default: 'with MusicBrainz'
     client: true
