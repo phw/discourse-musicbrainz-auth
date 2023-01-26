@@ -4,30 +4,25 @@
 # authors: Ohm Patel, Philipp Wolfer
 # url: https://github.com/metabrainz/discourse-musicbrainz-auth
 
-require_relative 'lib/omniauth/strategies/omniauth-musicbrainz.rb'
-
-
-class Auth::GenericOauth2Authenticator < Auth::ManagedAuthenticator
+class Auth::Oauth2BasicAuthenticator < Auth::ManagedAuthenticator
   class Oauth2BasicStrategy < ::OmniAuth::Strategies::OAuth2
     # Give your strategy a name.
-    option :name, :oauth2_basic
+    option :name, :oauth2
 
     # These are called after authentication has succeeded. If
     # possible, you should try to set the UID without making
     # additional calls (if the user id is returned with the token
     # or as a URI parameter). This may not be possible with all
     # providers.
-    uid{ raw_info['sub'] }
+    uid{ raw_info[SiteSetting.oauth2_json_user_id_path] }
 
     def info
       user_info = {}
-      puts "RAW_INFO", raw_info
-      if user_json.present?
-        json_walk(user_info, raw_info, :user_id)
-        json_walk(user_info, raw_info, :nickname)
-        json_walk(user_info, raw_info, :name)
-        json_walk(user_info, raw_info, :email)
-      end
+      json_walk(user_info, raw_info, :user_id)
+      json_walk(user_info, raw_info, :nickname)
+      json_walk(user_info, raw_info, :name)
+      json_walk(user_info, raw_info, :email)
+      user_info
     end
 
     extra do
@@ -70,7 +65,7 @@ class Auth::GenericOauth2Authenticator < Auth::ManagedAuthenticator
   end
 
   def name
-    "musicbrainz"
+    "oauth2_basic"
   end
 
   def enabled?
@@ -97,7 +92,7 @@ class Auth::GenericOauth2Authenticator < Auth::ManagedAuthenticator
                         if SiteSetting.oauth2_send_auth_header?
                           opts[:token_params] = {headers: {'Authorization' => basic_auth_header }}
                         end
-                        opts[:scope] = SiteSetting.oauth2_user_json_url
+                        opts[:scope] = "profile email"
                       }
   end
 
@@ -113,7 +108,7 @@ class Auth::GenericOauth2Authenticator < Auth::ManagedAuthenticator
 end
 
 auth_provider title_setting: "oauth2_button_title",
-              authenticator: Auth::MusicBrainzAuthenticator.new
+              authenticator: Auth::Oauth2BasicAuthenticator.new
 
 register_css <<CSS
 
