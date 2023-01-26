@@ -9,7 +9,6 @@ login:
   musicbrainz_token_url: '/oauth2/token'
   musicbrainz_user_info_url: '/oauth2/userinfo'
   musicbrainz_email_verified: true
-  musicbrainz_send_auth_header: true
   musicbrainz_button_title:
     default: 'with MusicBrainz'
     client: true

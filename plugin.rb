@@ -33,14 +33,7 @@ class Auth::MusicBrainzAuthenticator < Auth::ManagedAuthenticator
                           token_url: SiteSetting.musicbrainz_token_url
                         }
                         opts[:user_info_url] = SiteSetting.musicbrainz_user_info_url
-                        if SiteSetting.musicbrainz_send_auth_header?
-                          opts[:token_params] = {headers: {'Authorization' => basic_auth_header }}
-                        end
                       }
-  end
-
-  def basic_auth_header
-    "Basic " + Base64.strict_encode64("#{SiteSetting.musicbrainz_client_id}:#{SiteSetting.musicbrainz_client_secret}")
   end
 
   def primary_email_verified?(auth_token)

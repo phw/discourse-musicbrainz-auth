@@ -8,5 +8,4 @@ en:
     musicbrainz_token_url: 'Token URL for MusicBrainz'
     musicbrainz_user_info_url: 'URL to fetch user JSON for MusicBrainz'
     musicbrainz_email_verified: 'Check this if e-mails verified by MusicBrainz should be set to verified in Discourse'
-    musicbrainz_send_auth_header: 'Send the token as an HTTP Authorization header'
     musicbrainz_button_title: 'Label for the login button'
